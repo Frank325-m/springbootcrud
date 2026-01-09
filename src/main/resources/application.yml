@@ -1,0 +1,43 @@
+server:
+  port: 8080
+
+spring:
+  # Redis配置
+  redis:
+    host: localhost #Redis地址
+    port: 6379 # 端口
+    password: '' # 密码（无则填空）
+    database: 0 # 使用第0个数据库
+    timeout: 10000
+  # 缓存配置
+  cache:
+    type: redis # 缓存类型为Redis
+    redis:
+      time-to-live: 3600000 # 缓存过期时间1小时，单位ms
+      key-prefix: "learn:user:" # 缓存key前缀，避免冲突
+      use-key-prefix: true  # 启用前缀
+
+  #数据库配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/learn_java?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  # MyBatis-Plus配置
+  mybatis-plus:
+    # 可选：如果有Mapper.xml文件才需要配置，纯注解开发可省略
+    # mapper-location: classpath:mapper/*.xml # Mapper.xml文件路径
+    type-aliases-package: com.learn.springboot_hello.entity # 实体类包路径
+    configuration:
+      map-underscore-to-camel-case: true # 下划线转驼峰
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 打印SQL日志
+
+  # 日志配置（解决中文乱码）
+  logging:
+    charset:
+      console: UTF-8
+      file: UTF-8
+    level:
+      com.learn.springbootcrud: INFO # 自己的包日志级别
+      org.springframework.web: INFO
+      org.springframework.data.redis: INFO

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- 控制台输出Appender -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!-- 核心：指定编码为UTF-8 -->
+            <charset>UTF-8</charset>
+            <!-- 日志格式（可选，优化日志显示） -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 全局日志级别 -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+    </root>
+
+    <!-- 自定义包的日志级别（可选） -->
+    <logger name="com.learn.springbootcrud" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE" />
+    </logger>
+</configuration>
