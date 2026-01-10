@@ -1,6 +1,7 @@
 package com.learn.springbootcrud.filter;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import org.springframework.util.StringUtils;
 
@@ -21,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
  * 验证请求投中的Token,无Token/Token错误则拒绝访问
  */
 @Slf4j
-@WebFilter(urlPatterns = {"/user/**"}) // 拦截所有/user开头的接口
+// @WebFilter( urlPatterns = {"/**"}, //,"/user/**", "/task/**"}, filterName = "AuthFilter") // 拦截所有/user、/task 开头的接口
 public class AuthFilter implements Filter {
 
     // 模拟合法Token(实际项目中从Redis/数据库获取)
@@ -30,6 +31,7 @@ public class AuthFilter implements Filter {
     // 过滤器初始化（可选）
     public void init(FilterConfig filterConfig) throws ServletException {
         log.info("===== AuthFilter Init Success =====");
+        //log.info("Filter patterns path: " + Arrays.toString(filterConfig.getServletContext().getFilterRegistration("AuthFilter").getUrlPatternMappings().toArray()));
     }
 
     // 过滤器核心方法,处理请求
@@ -47,7 +49,8 @@ public class AuthFilter implements Filter {
         log.info("recived Token: {}", token);
 
         // 校验Token
-        if (!StringUtils.hasText(token) || !VALID_TOKEN.equals(token)) {
+        if (!StringUtils.hasText(token) && !VALID_TOKEN.equals(token)) {
+            log.info("Unvailed Token");
             // Token无效:返回401未授权,终止请求
             response.setContentType("application/json;charset=UTF-8");
             response.setCharacterEncoding("UTF-8");
