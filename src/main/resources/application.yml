@@ -4,9 +4,3 @@ spring:
     name: springbootcrud
   profiles:
     active: dev  # 【关键】指定当前激活的环境：dev(开发) 或 prod(生产)
-
-# 通用的Redis配置
-spring:
-  redis:
-    port: 6379
-    timeout: 10000

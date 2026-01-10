@@ -10,6 +10,7 @@ spring:
     password: '' # 密码（无则填空）
     database: 0 # 使用第0个数据库
     timeout: 10000
+    
   # 缓存配置
   cache:
     type: redis # 缓存类型为Redis
