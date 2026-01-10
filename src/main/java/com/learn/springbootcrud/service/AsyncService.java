@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 public class AsyncService {
     // @Async 注解：告诉Spring这是一个异步方法
     // 它会在一个单独的线程中运行，不会阻塞主线程
-    @Async
+    @Async("myAsyncPool")
     public void sendEmail(String email) {
         log.info("[Async Task] Send Message to: " + email);
 
