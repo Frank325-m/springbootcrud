@@ -9,7 +9,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @MapperScan("com.learn.springbootcrud.mapper")
-@ServletComponentScan // 扫描@WebFilter/@WebFilter等注解
+//@ServletComponentScan // 扫描@WebFilter/@WebFilter等注解
 @SpringBootApplication
 @EnableCaching // 启用SpringCache缓存
 @EnableAsync // 开启异步能力

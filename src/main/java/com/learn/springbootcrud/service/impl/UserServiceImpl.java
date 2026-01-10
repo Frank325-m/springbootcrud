@@ -25,7 +25,6 @@ public class UserServiceImpl implements UserService {
         return userMapper.selectById(id);
     }
 
-    @Cacheable(value="user", key="#user.id")
     @Override
     public int updateUser(User user) {
         return userMapper.updateById(user);
@@ -38,13 +37,11 @@ public class UserServiceImpl implements UserService {
         return userMapper.deleteById(id);
     }
 
-    @Cacheable(value="user", key="#user.id")
     @Override
     public int addUser(User user) {
         return userMapper.insert(user);
     }
 
-    @Cacheable(value="user", key="#user.id")
     @Override
     public List<User> getUserList() {
         return userMapper.selectList(Wrappers.emptyWrapper());

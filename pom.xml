@@ -139,6 +139,17 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<!-- Java 编译插件配置 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<!-- 添加这行，隐藏注解处理警告 -->
+					<compilerArgs>
+						<arg>-Xlint:-options</arg>
+					</compilerArgs>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
