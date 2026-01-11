@@ -50,7 +50,7 @@ public class UserController {
         @PathVariable Long id) {
         User user = userService.getUserById(id);
         if (user == null) {
-            throw new BusinessException("User ID is nonexist, ID: " + id);
+            throw new BusinessException("Get User is failed, User ID is : " + id);
         }
 
         return Result.success(user);
@@ -69,7 +69,7 @@ public class UserController {
     @PutMapping("/update")
     public Result<String> updateUser(@RequestBody User user) {
         if (user.getId() == null) {
-            throw new BusinessException("用户ID不能为空");
+            throw new BusinessException("user id is null");
         }
         int count = userService.updateUser(user);
         return count > 0 ? Result.success("modify user success") : Result.error(400, "modify user failed");
@@ -83,7 +83,7 @@ public class UserController {
         @PathVariable Long id) {
         int count = userService.deleteUser(id);
         if (count == 0) {
-            throw new BusinessException("删除失败，用户不存在，ID：" + id);
+            throw new BusinessException("delete user fail, user is not exist, ID: " + id);
         }
         return count > 0 ? Result.success("delete user success") : Result.error(400, "delete user failed");
     }

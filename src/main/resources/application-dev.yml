@@ -5,11 +5,18 @@ server:
 spring:
   # Redis配置
   redis:
-    host: localhost #Redis地址
+    host: 192.168.1.33 #Redis地址
     port: 6379 # 端口
-    password: '' # 密码（无则填空）
+    password: '123456' # 密码（无则填空）
+    username: default # Redis 6+默认用户是default，自定义用户则填实际用户名
     database: 0 # 使用第0个数据库
     timeout: 10000
+    lettuce:  # jedis:
+      pool:
+        max-active: 8 # 最大连接数
+        max-idel: 8 # 最大空闲连接
+        min-idel: 0 # 最小空闲连接
+        max-wait: 2000ms # 连接等待时间
     
   # 缓存配置
   cache:
@@ -17,11 +24,12 @@ spring:
     redis:
       time-to-live: 3600000 # 缓存过期时间1小时，单位ms
       key-prefix: "learn:user:" # 缓存key前缀，避免冲突
+      cache-null-values: false  # 不缓存null值
       use-key-prefix: true  # 启用前缀
 
   #数据库配置
   datasource:
-    url: jdbc:mysql://localhost:3306/learn_java?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://192.168.1.33:3306/learn_java?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver

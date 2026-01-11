@@ -1,7 +1,5 @@
 package com.learn.springbootcrud.config;
 
-import java.util.Arrays;
-
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,8 +9,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.learn.springbootcrud.filter.AuthFilter;
 import com.learn.springbootcrud.interceptorr.LogInterceptor;
-
-import jakarta.servlet.Filter;
 
 /**
  * WebMvc配置类: 注册拦截器,配置静态资源等

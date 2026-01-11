@@ -1,0 +1,21 @@
+version: '3'
+services:
+  # Redis 服务
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    container_name: my-redis
+
+  # App 服务（假设是你的 Spring Boot 程序）
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - redis
+    # 环境变量配置
+    environment:
+      # 注意这里的地址：直接写容器名 "redis"
+      - SPRING_REDIS_HOST=redis 
+      - SPRING_REDIS_PORT=6379

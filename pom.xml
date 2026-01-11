@@ -13,19 +13,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>springbootcrud</name>
 	<description>Demo project for Spring Boot</description>
-	<url/>
-	<licenses>
-		<license/>
-	</licenses>
-	<developers>
-		<developer/>
-	</developers>
-	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
-	</scm>
 
 	<!-- 关键：指定JDK21编译版本 -->
 	<properties>
@@ -96,27 +83,12 @@
             </exclusions>
 		</dependency>
 
-		<!-- 可选：如果需要更明确的JUnit5依赖（兜底） 
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.9.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.9.2</version>
-            <scope>test</scope>
-        </dependency>
-		-->
-
 		<!-- Redis依赖 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-redis</artifactId>
 		</dependency>
-
+		
 		<!-- SpringCache依赖（简化缓存注解） -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

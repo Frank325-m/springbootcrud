@@ -19,17 +19,21 @@ public class UserServiceImpl implements UserService {
     @Resource
     private UserMapper userMapper;
 
+    // 查询缓存：key=user::id，缓存User对象
     @Cacheable(value="user", key="#id")
     @Override
     public User getUserById(Long id) {
         return userMapper.selectById(id);
     }
 
+    // 修改后清除缓存，避免数据不一致
+    @CacheEvict(value = "user", key = "#user.id")
     @Override
     public int updateUser(User user) {
         return userMapper.updateById(user);
     }
 
+    // 删除后清除缓存
     @CacheEvict(value="user", key="#id")
     @Override
     public int deleteUser(Long id) {

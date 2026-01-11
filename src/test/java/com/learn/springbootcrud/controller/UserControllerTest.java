@@ -50,6 +50,6 @@ public class UserControllerTest {
 
         String msgValue = JsonUtil.getValue(response, "msg", String.class);
         System.out.print("\n"+ msgValue + "\n\n");
-        Assertions.assertTrue(msgValue.contains("nonexist"));
+        Assertions.assertTrue(msgValue.contains("failed"));
     }
 }
